@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Users;
+use App\Models\User;
 
 class Userseeder extends Seeder
 {
@@ -29,7 +29,7 @@ class Userseeder extends Seeder
         ]
         ];
         foreach ($users as $key => $value) {
-            user::create($value);
+            User::create($value);
         }
     }
 }

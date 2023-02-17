@@ -15,6 +15,7 @@ class SppController extends Controller
     public function index()
     {
         //
+        return view('spp.index');
     }
 
     /**
@@ -25,6 +26,7 @@ class SppController extends Controller
     public function create()
     {
         //
+        return view('spp.create');
     }
 
     /**
@@ -36,6 +38,22 @@ class SppController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'tahun' => 'required|max:4',
+            'nominal' => 'required',
+        ],[
+            'tahun.required'   =>'Tahun Wajib Di Isi',
+            'tahun.max'        =>'Tahun Maksimal 4 Digit',
+            'nominal.required' =>'Nomimal Wajib Di Isi',
+        ]);
+
+        Spp::create([
+            'tahun'   =>$request->tahun,
+            'nominal' =>$request->nominal,
+        
+        ]);
+
+        return redirect()->route('spp.index');
     }
 
     /**
