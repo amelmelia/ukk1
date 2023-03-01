@@ -14,13 +14,13 @@ class Spp extends Model
         'nominal',
 
     ];
-
-    public function kelas()
+     
+    public function siswa()
     {
-        return $this ->belongsTo('App\models\kelas', 'id', 'kelas_id');
+       return $this->hasMany('App\Models\Siswa');
     }
     public function pembayaran()
     {
-        return $this->hasMany('App\Models\pembayarans');
+        return $this->hasMany('App\Models\pembayaran');
     }
 }

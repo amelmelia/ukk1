@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('judul')
-    <h1>Halaman Spp</h1>
+    <h1>Halaman Petugas</h1>
 @endsection
 
 @section('content')
@@ -15,11 +15,11 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-      <h3 class="card-title">Data Spp</h3>
+      <h3 class="card-title">Data Petugas</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-    <a href="{{ route('spp.create') }}" class="btn btn-primary">
+    <a href="{{ route('petugas.create') }}" class="btn btn-primary">
           <i class="fas fa-plus-square"></i>
         Tambah   
         </a>
@@ -30,24 +30,26 @@
         <thead>
         <tr>
           <th>No</th>
-          <th>Tahun</th>
-          <th>Nominal</th>
+          <th>Nama Petugas</th>
+          <th>Username</th>
+          <th>Level</th>
           <th>Action</th>
         </tr>
         </thead>
         <tbody>
-          @forelse($spp as $spp)
+          @forelse($user as $item)
          <tr>
           <td>{{ $loop->iteration }}</td>
-          <td>{{ $spp->tahun }}</td>
-          <td>{{ $spp->nominal }}</td>
+          <td>{{ $item->nama_petugas }}</td>
+          <td>{{ $item->username }}</td>
+          <td>{{ $item->level }}</td>
           <td>
-          <form action="{{ route ('spp.destroy', [$spp->id])}}" method="POST">
-              <a class="btn btn-info mr-3" href="spp/{{$spp->id}}">
+          <form action="{{ route ('petugas.destroy', [$item->id] )}}" method="POST">
+              <a class="btn btn-info mr-3" href="{{ route('petugas.show', $item->id)}}">
               <i class="fas fas fa-exclamation-circle"></i> Detail</a> 
-              <a class="btn btn-warning mr-3" href="spp/{{$spp->id}}/edit">
+              <a class="btn btn-warning mr-3" href="{{ route('petugas.edit', $item->id)}}">
               <i class="fas fa-edit	"></i> Edit</a>
-              <form action="/spp/{{$spp->id}}" method="POST">
+              <form action="/petugas/" method="POST">
             @csrf
             @method('DELETE')
            <button type="submit" class="btn btn-danger" value="Delete">

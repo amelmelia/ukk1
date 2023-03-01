@@ -8,7 +8,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Tambah Data SPP</h3>
+                <h3 class="card-title">Tambah Data Spp</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -19,13 +19,12 @@
                     <label for="exampleInputEmail1">Tahun</label>
                     <input type="number" value="{{ old('tahun') }}" name="tahun" class="form-control" id="exampleInputEmail1" placeholder="Enter Tahun">
                   </div>
-                    @error('Tahun')
+                    @error('tahun')
                         <div class="alert alert-danger" role="alert">{{ $message }}</div>
                     @enderror
                   <div class="form-group">
                     <label for="exampleInputPassword1">Nominal</label>
                     <input type="number" value="{{ old('nominal') }}" name="nominal" class="form-control" id="exampleInputPassword1" placeholder="Enter Nominal">
-                  </div>
                 </div>
                     @error('nominal')
                         <div class="alert alert-danger" role="alert">{{ $message }}</div>

@@ -18,17 +18,17 @@ class pembayaran extends Model
     'tahun_bayar',
     'jumlah_bayar',
    ];
-   public function users()
+   public function user()
    {
-    return $this->belongTo('App\Models\users', 'id', 'kelas_id');
+    return $this->belongTo('App\Models\users','id','user_id');
    }
    public function siswa()
    {
-    return $this->belongsTo('App\Models\siswa', 'id', 'siswa_id');
+    return $this->belongsTo('App\Models\siswa','id','siswas_id');
    }
    public function spp()
    {
-    return $this ->belongsTo('App\models\kelas', 'id', 'kelas_id');
+    return $this ->belongsTo('App\models\kelas','id','spps_id');
    }
 }
 

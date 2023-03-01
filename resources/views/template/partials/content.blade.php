@@ -1,5 +1,8 @@
-<div class="card">
-        @yield('content')
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
+<!-- Main content -->
+<section class="content">
+
+@yield('content')
+
+</section>
+<!-- /.content -->
+</div>

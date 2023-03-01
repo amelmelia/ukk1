@@ -16,6 +16,6 @@ class Kelas extends Model
 
 public function siswa()
     {
-    return $this->hasmany('App\Models\siswa');
+    return $this->hasMany('App\Models\Siswa');
     }    
 }

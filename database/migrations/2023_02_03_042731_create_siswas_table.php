@@ -15,11 +15,11 @@ class CreateSiswasTable extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->char('nisn',10);
-            $table->char('nis',8);
-            $table->string('nama',35);
+            $table->char('nisn', 10);
+            $table->char('nis', 8);
+            $table->string('nama', 35);
             $table->text('alamat');
-            $table->string('no_telp',13);
+            $table->string('no_telpn', 13);
             $table->foreignid('kelas_id')->constrained('kelas')->onDelete('cascade');
             $table->foreignid('spps_id')->constrained('spps')->onDelete('cascade');
             $table->timestamps();

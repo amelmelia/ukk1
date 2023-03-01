@@ -1,4 +1,4 @@
 @extends('template.master')
 @section('content')
-<h1> selamat datang petugas </h1>
+<h1> Selamat Datang Petugas </h1>
 @endsection

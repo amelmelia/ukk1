@@ -15,13 +15,13 @@ class CreatePembayaransTable extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
+            $table->foreignid('users_id')->constrained('users')->onDelete('cascade');
+            $table->foreignid('siswas_id')->constrained('siswas')->onDelete('cascade');
+            $table->foreignid('spps_id')->constrained('spps')->onDelete('cascade');
             $table->date('tgl_bayar');
             $table->string('bulan_dibayar',8);
             $table->string('tahun_dibayar',4);
             $table->integer('jumlah_dibayar');
-            $table->foreignid('users_id')->constrained('users')->onDelete('cascade');
-            $table->foreignid('siswa_id')->constrained('siswas')->onDelete('cascade');
-            $table->foreignid('spps_id')->constrained('spps')->onDelete('cascade');
             $table->timestamps();
         });
     }

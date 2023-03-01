@@ -27,7 +27,7 @@
       <form action="{{ route('login.proses')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" name="username" placeholder="username">
+          <input type="user" name="username" class= "form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password"  placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -83,10 +83,10 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src=".{{ asset ('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+<script src=".{{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{ asset ('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset ('adminlte/dist/js/adminlte.min.js')}}"></script>
+<script src="{{ asset('adminlte/dist/js/adminlte.min.js')}}"></script>
 </body>
 </html>

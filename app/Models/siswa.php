@@ -16,12 +16,12 @@ class siswa extends Model
         'alamat',
         'no_telpn', 
         'kelas_id',
-        'spps-id',   
+        'spps_id',   
     ];
 
     public function kelas()
     {
-        return $this ->belongsTo('App\models\kelas', 'id', 'kelas_id');
+        return $this ->belongsTo('App\models\kelas','id','kelas_id');
     }
     public function pembayaran()
     {

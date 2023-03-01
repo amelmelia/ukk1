@@ -25,9 +25,11 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 if(Auth::user()->level == 'admin')
                 return redirect()->route('dashboard.admin');
-                else if(Auth::user()->level == 'petugas')
+            else if(Auth::user()->level == 'petugas')
                 return redirect()->route('dashboard.petugas');
-                return redirect(RouteServiceProvider::HOME);
+            else if(Auth::user()->level == 'admin')
+                return redirect()->route('dashboards.admin');
+            else return redirect(RouteServiceProvider::HOME);
             }
         }
 

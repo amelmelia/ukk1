@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Spp;
 use Illuminate\Http\Request;
 
+
 class SppController extends Controller
 {
     /**
@@ -15,7 +16,8 @@ class SppController extends Controller
     public function index()
     {
         //
-        return view('spp.index');
+        $spp = Spp::all();
+        return view('spp.index', compact('spp'));
     }
 
     /**
@@ -39,18 +41,18 @@ class SppController extends Controller
     {
         //
         $request->validate([
-            'tahun' => 'required|max:4',
-            'nominal' => 'required',
+            'tahun'     => 'required|max:4',
+            'nominal'   => 'required'
         ],[
-            'tahun.required'   =>'Tahun Wajib Di Isi',
-            'tahun.max'        =>'Tahun Maksimal 4 Digit',
-            'nominal.required' =>'Nomimal Wajib Di Isi',
+            'tahun.required'    => 'Tahun Wajib Di Isi',
+            'tahun.max'         => 'Tahun Maximal 4 Digit',
+            'nominal.required'  => 'Nominal Wajib Di Isi',
         ]);
 
+        // dd($request);
         Spp::create([
-            'tahun'   =>$request->tahun,
-            'nominal' =>$request->nominal,
-        
+            'tahun'     => $request->tahun,
+            'nominal'   => $request->nominal,
         ]);
 
         return redirect()->route('spp.index');
@@ -65,6 +67,8 @@ class SppController extends Controller
     public function show(Spp $spp)
     {
         //
+        $spps = Spp::find($spp->id);
+        return view('spp.show', compact('spps'));
     }
 
     /**
@@ -76,6 +80,8 @@ class SppController extends Controller
     public function edit(Spp $spp)
     {
         //
+        $spps = Spp::find($spp->id);
+        return view('spp.edit', compact('spps'));
     }
 
     /**
@@ -88,6 +94,15 @@ class SppController extends Controller
     public function update(Request $request, Spp $spp)
     {
         //
+        $request->validate([
+            'tahun' => 'required',
+            'nominal' => 'required',
+        ]);
+        $spps = Spp::find($spp->id);
+        $spps->tahun = $request->tahun;
+        $spps->nominal = $request->nominal;
+        $spps->update();
+        return redirect('/spp');
     }
 
     /**
@@ -99,5 +114,8 @@ class SppController extends Controller
     public function destroy(Spp $spp)
     {
         //
+        $spps = Spp::find($spp->id);
+        $spps->delete();
+        return redirect('/spp');
     }
 }

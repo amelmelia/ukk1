@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('judul')
-    <h1>Index siswa</h1>
+    <h1>Halaman Siswa</h1>
 @endsection
 
 @section('content')
@@ -19,36 +19,51 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-    <a href="student/create" class="btn btn-primary">
-          <i class="fas fa-plus"></i>
-           Tambah
+    <a href="{{ route('siswa.create') }}" class="btn btn-primary">
+          <i class="fas fa-plus-square"></i>
+        Tambah   
         </a>
+        <br>
+        </tr>
+        <br>
       <table id="example2" class="table table-bordered table-hover">
         <thead>
         <tr>
-          <th>nisn</th>
-          <th>nis</th>
-          <th>nama</th>
-          <th>alamat</th>
-          <th>no_tlp</th>
-          <th>kelas_id</th>
-          <th>spps_id</th>
+          <th>No</th>
+          <th>Nisn</th>
+          <th>Nis</th>
+          <th>Nama</th>
+          <th>Alamat</th>
+          <th>No_Telpn</th>
+          <th>Kelas_id</th>
+          <th>Spp_id</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
-          @forelse($siswas as $siswas)
+          @forelse($siswa as $siswa)
          <tr>
           <td>{{ $loop->iteration }}</td>
-          <td>{{ $siswas->nama }}</td>
-          <td>{{ $siswas->alamat }}</td>
-          <td>{{ $siswas->tlp }}</td>
+          <td>{{ $siswa->nisn }}</td>
+          <td>{{ $siswa->nis }}</td>
+          <td>{{ $siswa->nama }}</td>
+          <td>{{ $siswa->alamat }}</td>
+          <td>{{ $siswa->no_telpn }}</td>
+          <td>{{ $siswa->kelas_id }}</td>
+          <td>{{ $siswa->spps_id }}</td>
           <td>
-          <form action="{{ route ('siswa.destroy', [$siswas->id])}}" method="POST">
-              <a class="btn btn-info mr-3" href="siswa/{{$siswas->id}}">Detail</a>
-              <a class="btn btn-warning mr-3" href="siswa/{{$siswas->id}}/edit">Edit</a>
+          <form action="{{ route ('siswa.destroy', [$siswa->id])}}" method="POST">
+              <a class="btn btn-info mr-3" href="siswa/{{$siswa->id}}">
+              <i class="fas fas fa-exclamation-circle"></i> Detail</a> 
+              <a class="btn btn-warning mr-3" href="siswa/{{$siswa->id}}/edit">
+              <i class="fas fa-edit	"></i> Edit</a>
+              <form action="/siswa/{{$siswa->id}}" method="POST">
             @csrf
             @method('DELETE')
-           <input type="submit" class="btn btn-danger" value="Delete">
+           <button type="submit" class="btn btn-danger" value="Delete">
+           <i class="far fa-trash-alt"></i> 
+           Delete
+          </button>
           </form>
             </td>
          </tr>
@@ -63,24 +78,3 @@
     <!-- /.card-body -->
   
 @endsection
-
-@push('scripts')
-<script src="{{ asset ('adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset ('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-
-<script>
-    $(function () {
-     $('#data-siswa').DataSiswa();
-        
-      $('#example2').DataSiswa({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-      });
-    });
-  </script>
-@endpush
