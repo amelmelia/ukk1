@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\pembayaran;
+use App\Models\siswa;
+use App\Models\Spp;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -12,9 +17,13 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Siswa $siswa, Spp $spp)
     {
         //
+        $siswas = Siswa::find($siswa->id);
+        $users = User::all();
+        $spps = Spp::all();
+        return view('Pembayaran.index', compact('siswas','spps', 'pembayarans'));
     }
 
     /**
@@ -22,9 +31,14 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, Siswa $siswa, Spp $spp)
     {
         //
+        $siswas = Siswa::find($siswa->id);
+        $users = User::all();
+        $spps = Spp::all();
+        return view('Pembayaran.create', compact('siswas','spps'));
+       
     }
 
     /**
@@ -33,9 +47,26 @@ class PembayaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Siswa $siswa)
     {
         //
+        // dd($request);
+        $request->validate([
+            'tgl_bayar' => 'required',
+            'bulan_bayar' => 'required',
+            'tahun_dibayar' => 'required',
+            'jumlah_dibayar' => 'required'
+        ]);
+        Pembayaran::create([
+            'user_id'  => Auth::user()->id,
+            'siswa_id' =>  $siswa->id,
+            'spps_id'   =>  $siswa->spps_id,
+            'tgl_bayar' => $request->tgl_bayar,
+            'bulan_bayar' => $request->bulan_bayar,
+            'tahun_dibayar' => $request->tahun_dibayar,
+            'jumlah_bayar'=> $request->jumlah_dibayar,
+        ]);
+        return redirect()->route('siswa.show',$siswa->id);
     }
 
     /**

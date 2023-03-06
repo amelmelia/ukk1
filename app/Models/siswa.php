@@ -14,18 +14,22 @@ class siswa extends Model
         'nis',
         'nama',
         'alamat',
-        'no_telpn', 
+        'no_telpn',
         'kelas_id',
-        'spps_id',   
+        'spps_id'
     ];
-
-    public function kelas()
+    public function Kelas()
     {
-        return $this ->belongsTo('App\models\kelas','id','kelas_id');
+        return $this->belongsTo('App\Models\Kelas', 'kelas_id', 'id');
+    }
+    public function spp()
+    {
+        return $this->belongsTo('App\Models\Spp', 'spps_id', 'id');
     }
     public function pembayaran()
-    {
-        return $this->hasMany('App\Models\pembayarans');
-    }
+{
+    return $this ->hasMany('App\Models\Pembayaran');
+}
+
 }
 

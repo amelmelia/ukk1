@@ -12,7 +12,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/siswa" method="POST">
+              <form action="{{ route('siswa.store') }}" method="POST">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -32,8 +32,8 @@
                     <input type="text" name="alamat" class="form-control" id="input_alamat" placeholder="Silahkan Masukan Alamat">
                 </div>
                   <div class="form-group">
-                    <label for="input_no_telpn">No_Telpn</label>
-                    <input type="number" name="no_telpn" class="form-control" id="input_no_telpn" placeholder="Enter No Telpn">
+                    <label for="input_no_telpn">No_Telp</label>
+                    <input type="number" name="no_telpn" class="form-control" id="input_no_telpn" placeholder="Enter No Telp">
                 </div>
                   <div class="form-group">
                   <label>Nama Kelas</label>

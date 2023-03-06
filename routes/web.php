@@ -7,6 +7,8 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\PembayaranController;
+
 
 
 
@@ -64,6 +66,9 @@ Route::middleware(['auth', 'level:admin'])->group(function () {
         Route::put('petugas/{user}', 'update')->name('petugas.update');
         Route::delete('petugas/{user}', 'destroy')->name('petugas.destroy');
     });
+    Route::get('pembayaran/{siswa}', [PembayaranController::class, 'create'])->name('pembayaran.create');
+    Route::post('pembayaran/{siswa}', [PembayaranController::class, 'store'])->name('pembayaran.store');
+
 });
 
 Route::view('error/403', 'eror.403')->name('eror.403');

@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('judul')
-    <h1>Edit Data</h1>
+    <h1>Tambah Pembayaran</h1>
 @endsection
 
 @section ('content')
@@ -32,12 +32,6 @@
                     <option value="April">April</option>
                     <option value="mei">Mei</option>
                     <option value="juni">Juni</option>
-                    <option value="Agustus">Juli</option>
-                    <option value="Agustus">Agustus</option>
-                    <option value="September">September</option>
-                    <option value="Oktober">Oktober</option>
-                    <option value="November">November</option>
-                    <option value="Desember">Desember</option>
                  </select>
                   </div>
                    <div class="form-group">
@@ -54,7 +48,7 @@
                   </div>
                   <div class="form-group">
                     <label for="inputno_telp">jumlah dibayar</label>
-                    <input type="number" name="jumlah_bayar" class="form-control" id="inputno_telp">
+                    <input type="number" name="jumlah_dibayar" class="form-control" id="inputno_telp">
                   </div>
                  
                  

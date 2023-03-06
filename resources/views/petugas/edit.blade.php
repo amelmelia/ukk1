@@ -16,7 +16,7 @@
                 @method('PUT')
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="input_nisn">Nama</label>
+                    <label for="input_nisn">Nama Petugas</label>
                     <input type="text" name="nama_petugas" class="form-control" id="inputnisn" value="{{ $petugas->nama_petugas }}" require>
                   </div>
                   <div class="form-group">
